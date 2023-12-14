@@ -1,4 +1,4 @@
-//Homework 1 part 1
+//DEFINITION GMAIL
 const form_gmail = document.querySelector(".form_gmail");
 const [gmail_label,gmail_input,gmail_button,gmail_result] = [...form_gmail.querySelectorAll("#gmail_label, #gmail_input, #gmail_button, #gmail_result")]
 
@@ -16,19 +16,69 @@ gmail_button.onclick = () => {
 
 
 
-//Homework 1 part 2
+//MOVE BLOCK
 const child_block = document.querySelector(".child_block");
 
-let block_left = 0;
-const moveBlockLeft = () => {
-    block_left++
-    if (block_left <= 450){
-        requestAnimationFrame(moveBlockLeft)
-        child_block.style.left = `${block_left}px`
+const parentFreeWidth = 449;
+const moveSpeedChildBlock = 10;
+let positionX = 0;
+let positionY = 0;
+
+
+
+const moveBlock = () => {
+    if (positionX < parentFreeWidth && positionY === 0){
+        positionX++
+        child_block.style.left = `${positionX}px`
+        setTimeout(moveBlock, moveSpeedChildBlock)
+    }else if(positionX >= parentFreeWidth && positionY < parentFreeWidth){
+        positionY++
+        child_block.style.top = `${positionY}px`
+        setTimeout(moveBlock, moveSpeedChildBlock)
+    }else if(positionY >= parentFreeWidth && positionX !== 0){
+        positionX--
+        child_block.style.left = `${positionX}px`
+        setTimeout(moveBlock, moveSpeedChildBlock)
+    }else if (positionX === 0){
+        positionY--
+        child_block.style.top = `${positionY}px`
+        setTimeout(moveBlock, moveSpeedChildBlock)
     }
 }
-moveBlockLeft()
 
+moveBlock()
+
+//TIMER
+const time = document.querySelector(".time")
+let seconds = 0;
+let interval;
+const time_buttons = document.querySelector(".time_buttons")
+const [start,stop,reset] = [...time_buttons.querySelectorAll("button")]
+
+const startTimer = () => {
+    clearInterval(interval)
+    interval = setInterval(() => {
+        seconds++
+        time.innerHTML = seconds
+    }, 1000)
+}
+
+const stopTimer = () => {
+    clearInterval(interval)
+}
+
+const resetTimer = () => {
+    clearInterval(interval)
+    seconds = 0;
+    time.innerHTML = seconds
+}
+
+
+start.onclick = () => {startTimer()}
+
+stop.onclick = () => {stopTimer()}
+
+reset.onclick = () => {resetTimer()}
 
 
 
