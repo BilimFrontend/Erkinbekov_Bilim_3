@@ -7,6 +7,7 @@ const modalCloseButton = document.querySelector('.modal_close')
 const openModal = () => {
     modal.style.display = 'block'
     document.body.style.overflow = 'hidden'
+    document.removeEventListener('scroll', openModalScroll)
 }
 
 const closeModal = () => {
@@ -15,11 +16,9 @@ const closeModal = () => {
 }
 
 const openModalScroll = () => {
-    //Скролл до конца страницы
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
     if (window.scrollY >= scrollableHeight) {
         openModal()
-        document.removeEventListener('scroll', openModalScroll)
     }
 }
 
