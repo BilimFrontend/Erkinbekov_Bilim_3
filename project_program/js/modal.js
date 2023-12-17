@@ -7,7 +7,7 @@ const modalCloseButton = document.querySelector('.modal_close')
 const openModal = () => {
     modal.style.display = 'block'
     document.body.style.overflow = 'hidden'
-    document.removeEventListener('scroll', openModalScroll)
+    window.removeEventListener('scroll', openModalScroll)
 }
 
 const closeModal = () => {
@@ -23,7 +23,7 @@ const openModalScroll = () => {
 }
 
 
-document.addEventListener('scroll', openModalScroll)
+window.addEventListener('scroll', openModalScroll)
 
 
 
