@@ -80,5 +80,3 @@ stop.onclick = () => {stopTimer()}
 
 reset.onclick = () => {resetTimer()}
 
-
-
