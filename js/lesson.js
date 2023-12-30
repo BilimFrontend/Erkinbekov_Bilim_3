@@ -104,3 +104,53 @@ converter(usd, som, eur, "usd")
 converter(eur, som, usd, "eur")
 
 //DRY - don't repeat yourself
+
+
+// CARD SWITCHER
+const card = document.querySelector('.card'),
+    btnNext = document.querySelector('#btn-next'),
+    btnPrev = document.querySelector('#btn-prev')
+
+
+let count = 1;
+
+
+const fetchResponse = () => {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
+        .then(response => response.json())
+        .then(data => {
+            card.innerHTML = `
+            <p>${data.title}</p>
+            <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>>
+            <span>${data.id}</span>
+            `
+        })
+}
+
+
+const checkCount = (inc) => {
+    if (count > 200){
+        count = 1
+    }else if(count < 1){
+        count = 200
+    }
+    return inc
+}
+
+btnNext.addEventListener('click', () => {
+    checkCount(count++)
+    fetchResponse()
+})
+
+btnPrev.addEventListener('click', () => {
+    checkCount(count--)
+    fetchResponse()
+})
+
+fetchResponse()
+
+
+//FETCH RES
+fetch('https://jsonplaceholder.typicode.com/posts/')
+    .then((response) => response.json())
+    .then((data) => console.log(data))
