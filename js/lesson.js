@@ -78,25 +78,29 @@ const eur = document.querySelector('#eur')
 
 
 const converter =  ((element, targetElement, targetElementTwo ,current) => {
-    element.oninput = async () => {
-        const response = await fetch('../data/converter.json')
-        const data = await response.json()
-        switch (current) {
-            case 'som':
-                targetElement.value = (element.value / data.usd).toFixed(2)
-                targetElementTwo.value = (element.value / data.eur).toFixed(2)
-                break
-            case 'usd':
-                targetElement.value = (element.value * data.usd).toFixed(2)
-                targetElementTwo.value = (element.value * data.usd / data.eur ).toFixed(2)
-                break
-            case 'eur':
-                targetElement.value = (element.value * data.eur).toFixed(2)
-                targetElementTwo.value = (element.value * data.eur / data.usd).toFixed(2)
-                break
-            default:
-                break
+    try {
+        element.oninput = async () => {
+            const response = await fetch('../data/converter.json')
+            const data = await response.json()
+            switch (current) {
+                case 'som':
+                    targetElement.value = (element.value / data.usd).toFixed(2)
+                    targetElementTwo.value = (element.value / data.eur).toFixed(2)
+                    break
+                case 'usd':
+                    targetElement.value = (element.value * data.usd).toFixed(2)
+                    targetElementTwo.value = (element.value * data.usd / data.eur ).toFixed(2)
+                    break
+                case 'eur':
+                    targetElement.value = (element.value * data.eur).toFixed(2)
+                    targetElementTwo.value = (element.value * data.eur / data.usd).toFixed(2)
+                    break
+                default:
+                    break
+            }
         }
+    }catch (e){
+        console.log(e.message)
     }
 })
 

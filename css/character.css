@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body{
+    background: black;
+}
 
 .characters-card{
     padding-top: 50px;
@@ -22,7 +25,7 @@
     color: white;
     font-family: sans-serif;
     border-radius: 12px;
-    background: #6c77b4;
+    background: #2a2a2a;
 }
 
 .character-photo{
