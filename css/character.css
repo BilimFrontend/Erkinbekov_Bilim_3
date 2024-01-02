@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.characters-card{
+    padding-top: 50px;
+    display: flex;
+    width: 1110px;
+    justify-content: space-between;
+    margin: 50px auto;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.character-item{
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    color: white;
+    font-family: sans-serif;
+    border-radius: 12px;
+    background: #6c77b4;
+}
+
+.character-photo{
+    width: 250px;
+    height: 150px;
+    display: flex;
+    margin: 25px 0;
+}
+
+.character-photo img{
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.name-character{
+    font-weight: 600;
+}
+.desc-character{
+    text-align: left;
+    padding-top: 10px;
+}

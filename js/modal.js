@@ -42,7 +42,7 @@ modal.onclick = (event) => {
 
 const form = document.querySelector('form')
 
-const postData = (url = '', data = {}) => {
+const postData = async (url = '', data = {}) => {
     fetch(url, {
         method: "POST",
         headers: {"Content-type": "application.json"},
